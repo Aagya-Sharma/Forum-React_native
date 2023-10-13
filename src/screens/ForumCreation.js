@@ -13,6 +13,7 @@ import NextButton from "../components/Button";
 import Titletext from "../components/TitleText";
 import { useForumStore } from "../../store";
 import { useNavigation } from "@react-navigation/native";
+import NavBar from "../components/NavBar";
 const { width } = Dimensions.get("window");
 
 const ForumCreation = () => {
@@ -45,24 +46,27 @@ const ForumCreation = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Titletext text="Create Forum" />
-      <Card containerStyle={styles.cardContainer}>
-        <Text> Forum Title:</Text>
-        <TextInput
-          style={styles.textInput}
-          value={newForumTitle}
-          onChangeText={(text) => setNewForumTitle(text)}
-        />
-        <Text> Forum Content</Text>
-        <TextInput
-          style={styles.textInput}
-          value={newForumContent}
-          onChangeText={(text) => setNewForumContent(text)}
-        />
-      </Card>
-      <NextButton handlePress={handleAdd} text="Create Forum" />
-    </ScrollView>
+    <>
+      <ScrollView style={styles.container}>
+        <Titletext text="Create Forum" />
+        <Card containerStyle={styles.cardContainer}>
+          <Text> Forum Title:</Text>
+          <TextInput
+            style={styles.textInput}
+            value={newForumTitle}
+            onChangeText={(text) => setNewForumTitle(text)}
+          />
+          <Text> Forum Content</Text>
+          <TextInput
+            style={styles.textInput}
+            value={newForumContent}
+            onChangeText={(text) => setNewForumContent(text)}
+          />
+        </Card>
+        <NextButton handlePress={handleAdd} text="Create Forum" />
+      </ScrollView>
+      <NavBar />
+    </>
   );
 };
 
@@ -80,27 +84,6 @@ const styles = StyleSheet.create({
   cardContainer: {
     padding: 15,
     margin: 15,
-  },
-  subcontainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 35,
-  },
-  switchContainer: {
-    marginRight: 10,
-  },
-  textContainer: {
-    flex: 1,
-  },
-  nextButtonTitle: {
-    color: "#fff",
-  },
-  nextButton: {
-    width: width * 0.3,
-    borderRadius: 25,
-    margin: 10,
-    padding: 10,
-    alignItems: "center",
   },
 });
 
