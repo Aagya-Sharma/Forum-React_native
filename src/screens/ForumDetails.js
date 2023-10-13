@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   commentContainer: {
-    backgroundColor: "#fff", // Background color for comment boxes
+    backgroundColor: "#fff",
     padding: 10,
     marginVertical: 5,
     borderRadius: 5,

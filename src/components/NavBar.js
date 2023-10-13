@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableWithoutFeedback,
-  Alert,
-} from "react-native";
+import { View, Image, TouchableWithoutFeedback, Alert } from "react-native";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useForumStore } from "../../store";

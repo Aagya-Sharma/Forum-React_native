@@ -4,17 +4,15 @@ import {
   Text,
   View,
   ScrollView,
-  Image,
   Dimensions,
   Animated,
   TouchableOpacity,
 } from "react-native";
-
 import NavBar from "../components/NavBar";
 import Titletext from "../components/TitleText";
 import { useForumStore } from "../../store";
 import { useNavigation } from "@react-navigation/native";
-import NextButton from "../components/Button";
+import { Button } from "react-native-elements";
 
 const { width } = Dimensions.get("window");
 
@@ -43,22 +41,27 @@ const Home = () => {
       <View style={styles.container}>
         <Titletext text="Forums List" />
       </View>
-      <NextButton
-        handlePress={handleForumCreationNavigation}
-        text="Create Forum"
-      />
+      <View style={{ display: "flex", alignContent: "flex-end" }}>
+        <Button
+          size="md"
+          buttonStyle={[styles.nextButton, { backgroundColor: "#301934" }]}
+          titleStyle={styles.nextButtonTitle}
+          title="Add Forum"
+          onPress={handleForumCreationNavigation}
+        />
+      </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 130 }}>
         {forums.map((forum, index) => (
           <TouchableOpacity onPress={() => handleDetailsNavigation(forum.id)}>
             <Animated.View key={index} style={styles.insideContainer}>
               <View style={styles.infoContainer}>
-                <View style={styles.iconTextContainer}>
+                <View style={styles.textContainer}>
                   <Text style={styles.boldText}>{forum.title}</Text>
                 </View>
-                <View style={styles.iconTextContainer}>
+                <View style={styles.textContainer}>
                   <Text style={styles.text}>Description :{forum.content}</Text>
                 </View>
-                <View style={styles.iconTextContainer}>
+                <View style={styles.textContainer}>
                   <Text style={styles.text}>Author:{forum.author}</Text>
                 </View>
               </View>
@@ -75,7 +78,7 @@ export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 25,
     alignItems: "center",
   },
   insideContainer: {
@@ -100,60 +103,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginRight: 10,
   },
-  iconTextContainer: {
+  textContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
-  },
-  icon: {
-    width: 20,
-    height: 20,
-  },
-  profile: {
-    width: 50,
-    height: 50,
   },
   text: {
     marginLeft: 10,
   },
-  profileIcon: {
-    width: 35,
-    height: 35,
-  },
   boldText: {
     fontSize: 20,
     fontWeight: "bold",
-  },
-  priceText: {
-    marginVertical: 5,
-  },
-  ratingText: {
-    marginTop: 3,
-    marginLeft: 5,
-  },
-  userNameText: {
-    marginTop: 10,
-    marginLeft: 10,
-  },
-  swipeActionContainer: {
-    flexDirection: "column",
-  },
-  switchContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  switch: {
-    marginRight: 10,
-  },
-  actionText: {
-    fontSize: 16,
-    color: "white",
-    margin: 7,
   },
   rectContainer: {
     backgroundColor: "#301934",
     margin: 5,
     display: "flex",
     justifyContent: "center",
+  },
+  nextButtonTitle: {
+    color: "#fff",
+  },
+  nextButton: {
+    width: 150,
+    borderRadius: 25,
+    margin: 10,
+    padding: 10,
   },
 });
