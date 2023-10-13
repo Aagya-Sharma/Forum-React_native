@@ -23,6 +23,7 @@ const Home = () => {
   const forums = useForumStore((state) => state.forums);
   const loggedIn = useForumStore((state) => state.loggedIn);
 
+  // Check if the user is not logged in and navigate to LoginScreen
   React.useEffect(() => {
     if (!loggedIn) {
       navigation.navigate("LoginScreen");

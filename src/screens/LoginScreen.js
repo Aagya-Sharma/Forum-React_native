@@ -27,6 +27,8 @@ const LoginScreen = () => {
       login();
       setUser({ username, password });
       navigation.navigate("Home");
+      setPassword("");
+      setUsername("");
     } else {
       Alert.alert("Enter username and password");
     }
