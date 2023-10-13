@@ -28,7 +28,7 @@ const LoginScreen = () => {
       setUser({ username, password });
       navigation.navigate("Home");
     } else {
-      Alert.alert("type");
+      Alert.alert("Enter username and password");
     }
   };
   return (

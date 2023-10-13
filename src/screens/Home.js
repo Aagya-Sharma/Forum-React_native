@@ -21,6 +21,13 @@ const { width } = Dimensions.get("window");
 const Home = () => {
   const navigation = useNavigation();
   const forums = useForumStore((state) => state.forums);
+  const loggedIn = useForumStore((state) => state.loggedIn);
+
+  React.useEffect(() => {
+    if (!loggedIn) {
+      navigation.navigate("LoginScreen");
+    }
+  }, [loggedIn, navigation]);
   const handleDetailsNavigation = (id) => {
     console.log("into navigation details");
     navigation.navigate("ForumDetails", { id });
@@ -50,9 +57,7 @@ const Home = () => {
                   <Text style={styles.text}>Description :{forum.content}</Text>
                 </View>
                 <View style={styles.iconTextContainer}>
-                  <Text style={styles.text}>
-                    Author:{forum.author.username}
-                  </Text>
+                  <Text style={styles.text}>Author:{forum.author}</Text>
                 </View>
               </View>
             </Animated.View>

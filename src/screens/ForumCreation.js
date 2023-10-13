@@ -22,6 +22,7 @@ const ForumCreation = () => {
   const { addForum, user, setUser } = useForumStore();
   const navigation = useNavigation();
   const handleAdd = () => {
+    console.log(user);
     if (newForumTitle && newForumContent && user) {
       const newForum = {
         id: Date.now(),
