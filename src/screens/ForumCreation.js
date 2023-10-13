@@ -39,6 +39,8 @@ const ForumCreation = () => {
       Alert.alert("Forum created successfully");
 
       navigation.navigate("Home");
+    } else {
+      Alert.alert("cannot post empty forms");
     }
   };
 
