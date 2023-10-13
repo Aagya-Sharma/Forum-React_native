@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  Alert,
+} from "react-native";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useForumStore } from "../../store";
@@ -9,9 +15,26 @@ const NavBar = () => {
   const { logout, setUser } = useForumStore();
 
   const handleLogout = () => {
-    logout();
-    setUser({});
-    navigation.navigate("LoginScreen");
+    Alert.alert(
+      "Logout Confirmation",
+      "Are you sure you want to log out?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            logout();
+            setUser({});
+            navigation.navigate("LoginScreen");
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   return (
