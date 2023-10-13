@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   nextButton: {
-    width: 250, // Adjust the width as needed
+    width: 250,
     borderRadius: 25,
     margin: 25,
     padding: 15,

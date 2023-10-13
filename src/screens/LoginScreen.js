@@ -14,8 +14,6 @@ import Titletext from "../components/TitleText";
 import { useNavigation } from "@react-navigation/native";
 import { useForumStore } from "../../store";
 
-const { width } = Dimensions.get("window");
-
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [username, setUsername] = useState("");
@@ -23,7 +21,9 @@ const LoginScreen = () => {
   const { loggedIn, login, setUser } = useForumStore();
 
   const handleLogin = () => {
-    if (username && password) {
+    if (username.length < 6 || password.length < 6) {
+      Alert.alert("Username and password must have at least 6 characters");
+    } else {
       login();
       setUser({ username, password });
       navigation.navigate("Home");
@@ -31,8 +31,6 @@ const LoginScreen = () => {
       // Reset the input fields
       setPassword("");
       setUsername("");
-    } else {
-      Alert.alert("Enter username and password");
     }
   };
 
@@ -74,27 +72,6 @@ const styles = StyleSheet.create({
   cardContainer: {
     padding: 15,
     margin: 15,
-  },
-  subcontainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 35,
-  },
-  switchContainer: {
-    marginRight: 10,
-  },
-  textContainer: {
-    flex: 1,
-  },
-  nextButtonTitle: {
-    color: "#fff",
-  },
-  nextButton: {
-    width: width * 0.3,
-    borderRadius: 25,
-    margin: 10,
-    padding: 10,
-    alignItems: "center",
   },
 });
 
