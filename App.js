@@ -12,13 +12,6 @@ export default function App() {
   const { user, loggedIn } = useForumStore();
   const initialRoute = loggedIn ? "Home" : "LoginScreen";
 
-  // Check if the user is not logged in and navigate to LoginScreen
-  React.useEffect(() => {
-    if (!loggedIn) {
-      navigation.navigate("LoginScreen");
-    }
-  }, [loggedIn, navigation]);
-
   return (
     <NavigationContainer>
       <Stack.Navigator

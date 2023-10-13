@@ -29,6 +29,7 @@ const Home = () => {
       navigation.navigate("LoginScreen");
     }
   }, [loggedIn, navigation]);
+
   const handleDetailsNavigation = (id) => {
     console.log("into navigation details");
     navigation.navigate("ForumDetails", { id });
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     backgroundColor: "#ECF0F1",
     margin: 5,
-    width: width, // Adjust the width according to your requirements
+    width: width,
     borderRadius: 5,
     paddingVertical: 10,
   },

@@ -12,7 +12,6 @@ import { Card } from "react-native-elements";
 import NextButton from "../components/Button";
 import Titletext from "../components/TitleText";
 import { useForumStore } from "../../store";
-import { shallow } from "zustand/shallow";
 import { useNavigation } from "@react-navigation/native";
 const { width } = Dimensions.get("window");
 

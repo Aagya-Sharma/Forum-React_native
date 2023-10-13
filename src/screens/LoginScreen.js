@@ -13,7 +13,6 @@ import NextButton from "../components/Button";
 import Titletext from "../components/TitleText";
 import { useNavigation } from "@react-navigation/native";
 import { useForumStore } from "../../store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width } = Dimensions.get("window");
 
@@ -22,17 +21,21 @@ const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState();
   const { loggedIn, login, setUser } = useForumStore();
+
   const handleLogin = () => {
     if (username && password) {
       login();
       setUser({ username, password });
       navigation.navigate("Home");
+
+      // Reset the input fields
       setPassword("");
       setUsername("");
     } else {
       Alert.alert("Enter username and password");
     }
   };
+
   return (
     <View style={styles.container}>
       <Titletext text="Login into your account" />

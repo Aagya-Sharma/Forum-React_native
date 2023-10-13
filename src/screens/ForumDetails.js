@@ -16,7 +16,7 @@ function ForumDetails() {
   const route = useRoute();
   const { id } = route.params;
 
-  const { forums, comments, addComment } = useForumStore(); // Assuming you have a store set up for state management
+  const { forums, comments, addComment } = useForumStore();
 
   const forum = forums.find((forum) => forum.id === id) || {};
 
@@ -25,7 +25,6 @@ function ForumDetails() {
 
   const handleComment = () => {
     if (newComment) {
-      // Use the addComment function from your state management library to add a new comment
       addComment(id, newComment);
       setCommentList([...commentList, newComment]);
       setNewComment("");
